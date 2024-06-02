@@ -1,0 +1,7 @@
+---------------------------------------
+Bem vindo ao seu gerenciador de senhas!
+
+1- Ver Senhas
+2- Adicionar senha
+3- Gerar senha aleatória
+4- Sair da conta
