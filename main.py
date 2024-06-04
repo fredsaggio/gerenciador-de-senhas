@@ -1,11 +1,11 @@
 import time
 from login import menu_login
 from registro import menu_registro
-from arquivos_load import carregarDados, armazenarDados, clear, lerArquivo
+from arquivos_load import carregarDados, clear, lerArquivo
 
-def main():
 
-    contas = carregarDados('dados/dados.json')
+contas = carregarDados('dados/dados.json')
+def main(): 
     
     while True:
         clear()
@@ -15,10 +15,9 @@ def main():
         if not opcao.isnumeric() or int(opcao) not in range(1, 4):
             print('\nvalor inválido')
             time.sleep(1.5)
-            continue
 
         # Login no sistema
-        if opcao == '1':
+        elif opcao == '1':
             menu_login(contas)
             
         # Registrando no sistema
@@ -41,7 +40,6 @@ def main():
                 else:
                     print('Valor inválido.')
                     time.sleep(1.25)
-                    continue
             if certeza == 's':
                 break
 

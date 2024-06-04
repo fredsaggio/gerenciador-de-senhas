@@ -16,7 +16,6 @@ def carregarDados(arquivo):
             dados = json.load(arquivoo)
         return dados
     else:
-        print("Arquivo não encontrado. Iniciando com um novo dicionário vazio.")
         return {}
     
 def armazenarDados(arquivo, conteudo):

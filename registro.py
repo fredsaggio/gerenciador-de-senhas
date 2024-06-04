@@ -1,9 +1,7 @@
 import time
-from arquivos_load import lerArquivo, armazenarDados, carregarDados, clear
+from arquivos_load import armazenarDados, clear
 
-
-# Função para o menu de registro de usuário
-def menu_registro(contas):
+def atualizarDados(contas):
     while True:
         clear()
         registrar_usuario = input('Digite um nome de usuário para registro: ')
@@ -20,20 +18,28 @@ def menu_registro(contas):
 
         registrar_senha = input('Digite uma senha para registro: ')
 
-        if len(registrar_senha) < 8:
-            print('Sua senha deve conter no mínimo 8 caracteres.')
+        if len(registrar_senha) < 5:
+            print('Sua senha deve conter no mínimo 5 caracteres.')
             time.sleep(1.25)
             continue
         
-        contas[registrar_usuario] = registrar_senha
-
         print('Criando conta...')
-        armazenarDados('dados/dados.json', contas)
+        dados = {registrar_usuario: {'Senha': registrar_senha}} 
+        contas.update(dados)
         time.sleep(1.25)
 
         clear()
         print('Nome de usuário e senha salvos!')
+        armazenarDados('dados/dados.json', contas)
         time.sleep(0.5)
         print('Voltando ao menu principal...')
         time.sleep(1.25)
         break
+
+
+
+# Função para o menu de registro de usuário
+def menu_registro(contas):
+    atualizarDados(contas)
+
+    # conta = {nome: {senha: 'senha', site: {nome: senha, nome2: senha2}}}
