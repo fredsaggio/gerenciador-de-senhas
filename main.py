@@ -6,7 +6,7 @@ from arquivos_load import carregarDados, clear, lerArquivo
 
 contas = carregarDados('dados/dados.json')
 def main(): 
-    
+
     while True:
         clear()
         lerArquivo('opcoes')
