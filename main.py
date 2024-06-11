@@ -1,4 +1,3 @@
-import time
 from login import menu_login
 from registro import menu_registro
 from arquivos_load import *

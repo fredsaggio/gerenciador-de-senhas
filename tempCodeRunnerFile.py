@@ -1,0 +1,1 @@
+carregar_dados('dados/dados.json')

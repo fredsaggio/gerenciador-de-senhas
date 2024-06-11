@@ -1,4 +1,3 @@
-import time
 from arquivos_load import *  
 from menu import menu_gerenciador
 

@@ -1,4 +1,3 @@
-import time
 from arquivos_load import *
 
 def atualizar_dados(contas):

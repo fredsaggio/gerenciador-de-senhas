@@ -1,7 +1,4 @@
-import time
 from arquivos_load import *
-import os.path
-import cryptocode
 
 # Função para o menu do gerenciador
 def menu_gerenciador(contas, usuario):
@@ -15,6 +12,7 @@ def menu_gerenciador(contas, usuario):
 
         if escolher_opcao == '1':
             load('Redirecionando...')
+            clear()
 
             # Iterar sobre as contas do usuário
             for i in contas[usuario]:
