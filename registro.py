@@ -1,7 +1,7 @@
 import time
-from arquivos_load import armazenarDados, clear
+from arquivos_load import *
 
-def atualizarDados(contas):
+def atualizar_dados(contas):
     while True:
         clear()
         registrar_usuario = input('Digite um nome de usuário para registro: ')
@@ -22,6 +22,9 @@ def atualizarDados(contas):
             print('Sua senha deve conter no mínimo 5 caracteres.')
             time.sleep(1.25)
             continue
+
+        # Criptografando a senha do usuário
+        registrar_senha = criptografar(registrar_senha, chave_login)
         
         print('Criando conta...')
         dados = {registrar_usuario: {'Senha': registrar_senha}} 
@@ -30,16 +33,15 @@ def atualizarDados(contas):
 
         clear()
         print('Nome de usuário e senha salvos!')
-        armazenarDados('dados/dados.json', contas)
+        armazenar_dados('dados/dados.json', contas)
         time.sleep(0.5)
         print('Voltando ao menu principal...')
         time.sleep(1.25)
         break
 
-
-
-# Função para o menu de registro de usuário
+    
 def menu_registro(contas):
-    atualizarDados(contas)
+    atualizar_dados(contas)
 
-    # conta = {nome: {senha: 'senha', site: {nome: senha, nome2: senha2}}}
+
+ # pip install cryptocode

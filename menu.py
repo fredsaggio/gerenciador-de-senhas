@@ -1,11 +1,7 @@
 import time
-from arquivos_load import armazenarDados, lerArquivo, clear, carregarDados
+from arquivos_load import *
 import os.path
-
-def load(texto):
-    clear()
-    print(texto)
-    time.sleep(1.25)
+import cryptocode
 
 # Função para o menu do gerenciador
 def menu_gerenciador(contas, usuario):
@@ -13,22 +9,26 @@ def menu_gerenciador(contas, usuario):
     while True:
         cont = 0
         clear()
-        lerArquivo('opcoes2')
+        ler_arquivo('opcoes2')  # Texto do menu
 
         escolher_opcao = input('\nEscolha uma das opções acima: ')
 
         if escolher_opcao == '1':
             load('Redirecionando...')
 
+            # Iterar sobre as contas do usuário
             for i in contas[usuario]:
-                # Iterar sobre a chave 'site'
+                # Ignora a primeira chave (senha)
                 if cont == 0: 
                     cont+=1
                     continue
                 print('-'*30)
                 print(f'Site: {i}\n')
+                # Iterar sobre os usuários e senhas do site
                 for x in contas[usuario][i]:
-                    print(f'Usuario: {x}\nSenha: {contas[usuario][i][x]}')
+                    # Descriptografa a senha antes de exibir
+                    senha_decrypto = descriptografar(contas[usuario][i][x], chave_gerenc)
+                    print(f'Usuario: {x}\nSenha: {senha_decrypto}')
 
             print('-'*30)
             print()
@@ -39,26 +39,22 @@ def menu_gerenciador(contas, usuario):
             site = input('Digite o nome do site: ')
             usuario_site = input('Digite o nome de usuário do site: ')
             senha_site = input('Digite a senha: ')
+            senha_site = criptografar(senha_site, chave_gerenc)  # Criptografar a senha antes de armazenar
             dicionario = {site: {usuario_site: senha_site}}
-            contas[usuario].update(dicionario)
-            armazenarDados('dados/dados.json', contas)
-
+            contas[usuario].update(dicionario)  # Adicionar site, usuário e senha ao dicionário de contas
+            armazenar_dados('dados/dados.json', contas)  # Armazenar os dados atualizados no arquivo
 
             clear()
-
             print('Armazenando senha...')
             time.sleep(1.25)
-
             clear()
-
             print('Senha armazenada com sucesso!')  
 
         elif escolher_opcao == '3':
             load('Redirecionando...')
             clear()
-            print('Saindo da conta e voltando ao menu principal...')
-            time.sleep(1.25)
-            break
+            load('Saindo da conta e voltando ao menu principal...')
+            break  # Sair do loop e retornar ao menu principal
         
         else:
             print('Valor inválido')
