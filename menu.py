@@ -4,7 +4,6 @@ from arquivos_load import *
 def menu_gerenciador(contas, usuario):
 
     while True:
-        cont = 0
         clear()
         ler_arquivo('opcoes2')  # Texto do menu
 
@@ -13,7 +12,7 @@ def menu_gerenciador(contas, usuario):
         if escolher_opcao == '1':
             load('Redirecionando...')
             clear()
-
+            cont = 0
             # Iterar sobre as contas do usuário
             for i in contas[usuario]:
                 # Ignora a primeira chave (senha)
@@ -38,8 +37,8 @@ def menu_gerenciador(contas, usuario):
             usuario_site = input('Digite o nome de usuário do site: ')
             senha_site = input('Digite a senha: ')
             senha_site = criptografar(senha_site, chave_gerenc)  # Criptografar a senha antes de armazenar
-            dicionario = {site: {usuario_site: senha_site}}
-            contas[usuario].update(dicionario)  # Adicionar site, usuário e senha ao dicionário de contas
+            dados_site = {site: {usuario_site: senha_site}}
+            contas[usuario].update(dados_site)  # Adicionar site, usuário e senha ao dicionário de contas
             armazenar_dados('dados/dados.json', contas)  # Armazenar os dados atualizados no arquivo
 
             clear()
