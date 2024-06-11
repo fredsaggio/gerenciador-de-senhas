@@ -1,6 +1,6 @@
 from arquivos_load import *
 
-def atualizar_dados(contas):
+def menu_registro(contas):
     while True:
         clear()
         registrar_usuario = input('Digite um nome de usuário para registro: ')
@@ -38,9 +38,3 @@ def atualizar_dados(contas):
         time.sleep(1.25)
         break
 
-    
-def menu_registro(contas):
-    atualizar_dados(contas)
-
-
- # pip install cryptocode
