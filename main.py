@@ -29,14 +29,15 @@ def main():
         else:
             while True:
                 clear()
-                certeza = input('Tem certeza que deseja sair do programa? [s/n]: ').strip().lower()
 
-                if certeza in ['s', 'sim', 'si', 'yes', 'y']:
+                confirmar = input('Tem certeza que deseja sair do programa? [s/n]: ').strip().lower()
+
+                if confirmar in ['s', 'sim', 'si', 'yes', 'y']:
                     print('Programa finalizado, até a próxima!')
                     time.sleep(1.25)
                     break
 
-                elif certeza in ['n', 'não', 'nao', 'no']:
+                elif confirmar in ['n', 'não', 'nao', 'no']:
                     print('Voltando ao menu principal...')
                     time.sleep(1.25)
                     break
@@ -44,7 +45,7 @@ def main():
                     print('Valor inválido.')
                     time.sleep(1.25)
             # If pra sair do loop principal
-            if certeza in ['s', 'sim', 'si', 'yes']:
+            if confirmar in ['s', 'sim', 'si', 'yes']:
                 break
 
 main()
